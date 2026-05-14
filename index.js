@@ -60,25 +60,75 @@ const newId = function () {
 };
 
 app.post("/add-student" , (req,res)=>{
-    
-    let {id, name, cls , city } = req.body;
-    const q = "INSERT INTO students (id, name, class, city) VALUES (?, ?, ?, ?)";
-    try {
-    connection.query(q, [id, name, cls, city ], (err, result) => {
+  let {name, cls, city} = req.body;
+  let q1 = "SELECT COUNT(id) AS total FROM students";
+
+connection.query(q1, (err, result) => {
+    if (err) {
+        res.send(err);
+        return;
+    }
+
+    let total = result[0].total + 1;
+
+    let q2 = "INSERT INTO students(id, name, class, city) VALUES (?, ?, ?, ?)";
+
+    connection.query(q2, [total, name, cls, city], (err, result2) => {
+        if (err) {
+            res.send(err);
+            return;
+        }
+
+        res.redirect("/home");
+    });
+});
+});
+   
+      
+
+app.get("/student-info", (req, res)=>{
+  res.render("searchStu.ejs")
+})
+
+
+app.get("/student-info/city", (req, res) => {
+  let {city}= req.query;
+  
+  let q = 'SELECT * FROM students WHERE city=?';
+  try {
+    connection.query(q, [city], (err, result) => {
       if (err) throw err;
-      res.redirect("/home");
+      let counts = result;
+      res.render("student-info.ejs", { counts });
     });
   } catch (err) {
     console.log(err);
     res.send("Error in DB");
   }
-})
+});
 
 
-app.get("/student-info", (req, res) => {
+app.get("/student-info/roll", (req, res) => {
+  let {roll}= req.query;
+  
+  let q = 'SELECT * FROM students WHERE id=?';
+  try {
+    connection.query(q, [roll], (err, result) => {
+      if (err) throw err;
+      let counts = result;
+      res.render("student-info.ejs", { counts });
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Error in DB");
+  }
+});
+
+
+app.get("/student-info/name", (req, res) => {
   let {name}= req.query;
   
-  let q = 'SELECT * FROM students WHERE city=?';
+  let q = 'SELECT * FROM students WHERE name=?';
   try {
     connection.query(q, [name], (err, result) => {
       if (err) throw err;

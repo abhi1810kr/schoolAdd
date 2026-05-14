@@ -61,12 +61,7 @@
     align-items: center;
 }
 
-.hero-sec div input{
-    padding: 8px;
-    border: none;
-    outline: none;
-    border-radius: 7px;
-}
+
 .hero-sec div button{
     padding: 10px;
     border: none;

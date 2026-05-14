@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Students Details</title>
+    <link rel="stylesheet" href="/search.css">
+</head>
+<body>
+
+    <div class="container">
+        <div><h1>Search Student By</h1></div>
+        <div class="srch-opt">
+            <div class="option nameOpt">Name</div>
+            <div class="option rollOpt">Add.No.</div>
+            <div class="option cityOpt">City</div>
+        </div>
+        <div class="nameSrch searchBox">
+            <form action="/student-info/name" method="get">
+                    <label for="name">Enter Name:</label>
+                    
+                    <input type="text" name="name" placeholder="Enter Student's Name..." />
+                    
+                    <button>Search</button>
+            </form>
+        </div>
+        <div class="addSrch searchBox">
+            <form action="/student-info/roll" method="get">
+                    <label for="roll">Enter Addmission No.:</label>
+                    
+                    <input type="text" name="roll" placeholder="Enter Student's Add.No...." />
+                    
+                    <button>Search</button>
+                </form>
+        </div>
+        <div class="citySrch searchBox">
+            <form action="/student-info/city" method="get">
+                    <label for="city">Enter Student's City</label>
+                    
+                    <input type="text" name="city" placeholder="Enter Student's City..." />
+                    
+                    <button>Search</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="/searchScript.js"></script>
+</body>
+</html>
