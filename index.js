@@ -76,10 +76,11 @@ app.post("/add-student" , (req,res)=>{
 
 
 app.get("/student-info", (req, res) => {
+  let {name}= req.query;
   
-  let q = 'SELECT * FROM students';
+  let q = 'SELECT * FROM students WHERE city=?';
   try {
-    connection.query(q, (err, result) => {
+    connection.query(q, [name], (err, result) => {
       if (err) throw err;
       let counts = result;
       res.render("student-info.ejs", { counts });
