@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <div class="container">
+       <div class="nav-bar">
+        <div class="logo">
+            <img src="/images/logo.jpg" />
+        </div>
+        <div class="menu-list">
+            <ul>
+                <li>Home</li>
+                <li>Facility</li>
+                <li>About</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+       </div>
+       <div class="hero-sec" id="home">
+            <div>
+                <h2>Search Student</h2>
+                <form action="/student-info" method="get">
+                    <label for="name">Search by Name</label>
+                    <br><br>
+                    <input type="text" name="name" placeholder="Enter Students Name..." />
+                    <br><br>
+                    
+
+                    <button>Search</button>
+                </form>
+            </div>
+            <div>
+                <h2>Addmission</h2>
+                <p>For addmission of new students. <br> Please Click Below</p>
+                <form action="/add-student" method="get">
+
+                     <button>Add Student</button>
+                </form>
+               
+            </div>
+       </div>
+    </div>
+</body>
+</html>

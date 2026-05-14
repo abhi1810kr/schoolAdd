@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    background-color: aqua;
+}
+
+.nav-bar{
+    height: 40px;
+    width: 100%;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 0;
+}
+
+.nav-bar .logo{
+    margin-left: 40px;
+}
+
+.nav-bar .logo img{
+    width: 28px;
+}
+
+
+.nav-bar .menu-list{
+    margin-right: 40px;
+}
+
+
+.nav-bar .menu-list ul{
+    list-style: none;
+    display: flex;
+    gap: 16px;
+}
+
+.hero-sec{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: blanchedalmond;
+    width: 100%;
+    padding: 20px;
+    margin-top: 7px;
+
+}
+
+.hero-sec div{
+    width: 40%;
+    height: 400px;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-sec div input{
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+}
+.hero-sec div button{
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(216, 142, 51);
+}
