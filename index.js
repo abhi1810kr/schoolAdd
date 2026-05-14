@@ -61,10 +61,10 @@ const newId = function () {
 
 app.post("/add-student" , (req,res)=>{
     
-    let {name, cls , city } = req.body;
+    let {id, name, cls , city } = req.body;
     const q = "INSERT INTO students (id, name, class, city) VALUES (?, ?, ?, ?)";
     try {
-    connection.query(q, [id.uuid, name, cls, city ], (err, result) => {
+    connection.query(q, [id, name, cls, city ], (err, result) => {
       if (err) throw err;
       res.redirect("/home");
     });
@@ -76,8 +76,8 @@ app.post("/add-student" , (req,res)=>{
 
 
 app.get("/student-info", (req, res) => {
-  let {name} = req.body;
-  let q = `SELECT * FROM students WHERE name='${name}';`;
+  
+  let q = 'SELECT * FROM students';
   try {
     connection.query(q, (err, result) => {
       if (err) throw err;

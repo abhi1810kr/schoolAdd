@@ -5,17 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Student</title>
 </head>
+<link rel="stylesheet" href="/stu-form.css">
 <body>
     <form action="/add-student" method="post">
-        <label for="name">Students Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Enter fullname" required/>
-        <br>
-        <label for="cls">Enter Standard:</label><br>
-        <input type="number" id="cls" name="cls" max="10" required/>
-        <br>
-        <label for="city">Enter Student's City:</label><br>
-        <input type="text" name="city" id="city" placeholder="Enter city name">
-        <br>
+        <table>
+            <thead>Student Enrollment Form</thead>
+            <tr>
+                <td><label for="id">Enter Addmission ID:</label></td>
+                <td><input type="number" name="id" placeholder="Enter id" required /></td>
+            </tr>
+        
+            <tr>
+                <td><label for="name">Students Name:</label></td>
+                <td><input type="text" id="name" name="name" placeholder="Enter fullname" required/></td>
+            </tr>
+        
+            <tr>
+                <td><label for="cls">Enter Standard:</label></td>
+                <td><input type="number" id="cls" name="cls" max="10" required/></td>
+            </tr>
+        
+            <tr>
+                <td><label for="city">Enter Student's City:</label></td>
+                <td><input type="text" name="city" id="city" placeholder="Enter city name"></td>
+            </tr>
+        
+        
+        
+        
+        
+        
+        </table>
 
         <button>Add Student</button>
         

@@ -1,0 +1,25 @@
+table , td{
+    border: 1px solid;
+}
+
+td{
+    text-align: left;
+    width: 150px;
+}
+
+input{
+    outline: none;
+    border: none;
+}
+
+button{
+    padding: 5px;
+    width: 250px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background:linear-gradient(to right, red, blue);
+    color: white;
+    margin-top: 40px;
+    margin-left: 25px;
+}
