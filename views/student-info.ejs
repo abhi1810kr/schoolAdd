@@ -18,6 +18,19 @@
         min-width: 130px;
         max-width: 200px;
     }
+
+    #del-btn{
+        height: 100%;
+        width: 100%;
+        border: none;
+        background: transparent;
+        color: red;
+    }
+
+    #del-btn:hover{
+        cursor: pointer;
+        text-decoration: line-through;
+    }
 </style>
 <body>
     <table>
@@ -29,6 +42,8 @@
             <th class="textspace">Email</th>
             <th class="textspace">Birth Date</th>
             <th>Gender</th>
+            <th class="textspace">Addmission Date</th>
+            <th>Delete Student</th>
         </tr>
         <% for(count of counts) {%>
         <tr>
@@ -39,6 +54,10 @@
          <td class="textspace"><%=(count.email)%></td>
          <td class="textspace"><%=(count.dob)%></td>
          <td><%=(count.gender).toUpperCase()%></td>
+         <td class="textspace"><%=(count.doa)%></td>
+         <td><form method="post" action="/del-stu/<%= count.id%>?_method=DELETE">
+                <button id="del-btn">Delete Post</button>
+            </form></td>
          </tr>
         <% }%>
     </table>

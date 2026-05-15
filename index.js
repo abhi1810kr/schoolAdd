@@ -3,7 +3,8 @@ const app = express();
 const path = require("path");
 app.use(express.urlencoded({ extended: true }));
 
-
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 
 const mysql = require("mysql2");
@@ -54,6 +55,7 @@ app.get("/add-student" , (req,res)=>{
 
 app.post("/add-student" , (req,res)=>{
   let {name, cls, city, email, dob, gender} = req.body;
+  let doa = new Date();
   let q1 = "SELECT MAX(id) AS total FROM studentsData";
 
 connection.query(q1, (err, result) => {
@@ -64,9 +66,9 @@ connection.query(q1, (err, result) => {
 
     let total = result[0].total + 1;
 
-    let q2 = "INSERT INTO studentsData(id, name, class, city, email, dob, gender) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    let q2 = "INSERT INTO studentsData(id, name, class, city, email, dob, gender, doa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    connection.query(q2, [total, name, cls, city, email, dob, gender], (err, result2) => {
+    connection.query(q2, [total, name, cls, city, email, dob, gender, doa], (err, result2) => {
         if (err) {
             res.send(err);
             return;
@@ -149,3 +151,13 @@ app.get("/all-students", (req, res) => {
     res.send("Error in DB");
   }
 });
+
+app.delete("/del-stu/:id", (req, res)=>{
+  let {id} = req.params;
+  const q= `DELETE FROM studentsData WHERE id=${id};`;
+  connection.query(q, (err, result)=>{
+    if(err) res.send("Error in DB");
+    res.redirect("/home");
+  })
+
+})
