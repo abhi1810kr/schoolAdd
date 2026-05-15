@@ -44,6 +44,7 @@
             <th>Gender</th>
             <th class="textspace">Addmission Date</th>
             <th>Delete Student</th>
+            <th>Add. Certificate</th>
         </tr>
         <% for(count of counts) {%>
         <tr>
@@ -57,7 +58,13 @@
          <td class="textspace"><%=(count.doa)%></td>
          <td><form method="post" action="/del-stu/<%= count.id%>?_method=DELETE">
                 <button id="del-btn">Delete Post</button>
-            </form></td>
+            </form>
+        </td>
+        <td>
+            <form action="/student/<%=count.id%>/certificate" method="get">
+                <button>View Certificate</button>
+            </form>
+        </td>
          </tr>
         <% }%>
     </table>

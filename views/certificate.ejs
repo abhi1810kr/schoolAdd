@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addmission Certificate</title>
+    <link rel="stylesheet" href="/certificate.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <button onclick="downloadPdf()" id="down-btn">Download PDF</button>
+     <% for(doc of docs) {%>
+    <div class="add-pdf">
+       
+        <div class="nav">
+            <div class="profile">
+                <img src="/images/logo.jpg" />
+            </div>
+            <div class="school-info">
+                <div class="header">
+                    <div>
+                    <p id="school-name">Government High School <br> Parsa Bazar Patna 804453</p>
+                    <p><b>Addmission Certificate</b></p>
+                </div>
+                <div class="school-logo">
+                    <img src="/images/school-logo.jpg">
+                </div>
+                </div>
+                
+                <p>COMBINED HIGHER SECONDARY LEVEL EXAMINATION, 2026</p>
+            </div>
+        </div>
+        <div class="stu-info">
+            <table border="1px">
+                <tr>
+                    <td>Roll No.: <b><%=doc.id%></b></td>
+                    <td>Class: <b><%=doc.class%></b></td>
+                </tr>
+                <tr>
+                    <td>Name: <b><%=doc.name%></b></td>
+                    <td>Date of Birth: <b><%=doc.dob%></b></td>
+                </tr>
+                <tr>
+                    <td>Email: <b><%=doc.email%></b></td>
+                    <td>Medium of Writing: <b>ENGLISH</b></td>
+                </tr>
+                <tr>
+                    <td>Date of Examination: <b>20/06/2026</b></td>
+                    <td>Exam Centre: <b>Govt. High School, Parsa</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="rules">
+            <p><b>Rules and regulation:</b></p>
+            <ul>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui consequuntur fugiat ratione labore. Facere ab.</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <div class="stu-sign">
+                <img src="/images/stu-sign.jpg" />
+                <p>Student's Sign</p>
+            </div>
+            <div class="teacher-sign">
+                <img src="/images/principal-sign.jpg" />
+                <p>Principal's Sign</p>
+            </div>
+        </div>
+       
+    </div>
+     <%}%>
+
+     <script>
+        function downloadPdf(){
+            const pdf = document.querySelector('.add-pdf');
+            html2pdf().from(pdf).save('Addmission-Certificate');
+        }
+     </script>
+</body>
+</html>

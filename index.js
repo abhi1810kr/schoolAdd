@@ -161,3 +161,13 @@ app.delete("/del-stu/:id", (req, res)=>{
   })
 
 })
+
+
+app.get("/student/:id/certificate", (req, res)=>{
+  let {id} = req.params;
+  const q = `SELECT * FROM studentsData WHERE id=${id};`;
+  connection.query(q, (err, result)=>{
+    let docs = result;
+    res.render("certificate.ejs" , {docs});
+  });
+});
