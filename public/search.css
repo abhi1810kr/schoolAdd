@@ -8,6 +8,7 @@ body{
     height: 100vh;
     background-color: antiquewhite;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -19,7 +20,7 @@ body{
     padding: 20px;
     position: relative;
     border-radius: 30px;
-    background:linear-gradient(to right, yellow, orange);
+    background:linear-gradient(to right, white, grey);
 }
 
 h1{
@@ -27,7 +28,7 @@ h1{
     height: 50px;
     font-size: 30px;
     text-decoration: underline;
-    color: rgb(99, 40, 239);
+    color: #333;
 }
 
 .srch-opt{
@@ -53,15 +54,18 @@ h1{
 }
 
 .nameOpt{
-    background-color: rgb(195, 202, 50);
+    background-color: grey;
+    color: #333;
 }
 
 .rollOpt{
-    background-color: rgb(244, 187, 102);
+    
+    color: #333;
 }
 
 .cityOpt{
-    background-color: rgb(215, 239, 118);
+   
+    color: #333;
 }
 
 .searchBox{
@@ -115,18 +119,34 @@ h1{
 }
 
 .addSrch{
-    background:linear-gradient(to bottom, rgb(244, 187, 102), red);
+    background:linear-gradient(to bottom, grey, rgb(222, 210, 210));
     
 }
 .citySrch{
-    background:linear-gradient(to bottom, rgb(215, 239, 118), red);
+    background:linear-gradient(to bottom,  grey, rgb(222, 210, 210));
 
 }
 .nameSrch{
-    background:linear-gradient(to bottom, rgb(195, 202, 50), red);
+    background:linear-gradient(to bottom,  grey, rgb(222, 210, 210));
     z-index: 1;
 }
 
 .front{
     z-index: 1;
+    
+}
+
+.all form{
+    margin: 30px 0;
+
+}
+
+.all form button{
+     width: 160px;
+    padding: 6px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: linear-gradient(to right, green, blue);
+    border-radius: 10px;
 }

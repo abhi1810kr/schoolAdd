@@ -51,17 +51,10 @@ app.get("/add-student" , (req,res)=>{
     res.render("new-stu.ejs");
 });
 
-let num = 0;
-const newId = function () {
-  let str = ["a", "b", "c", "d"];
-  let unique = str[num++ % 4] + num;
-
-  return unique;
-};
 
 app.post("/add-student" , (req,res)=>{
-  let {name, cls, city} = req.body;
-  let q1 = "SELECT COUNT(id) AS total FROM students";
+  let {name, cls, city, email, dob, gender} = req.body;
+  let q1 = "SELECT MAX(id) AS total FROM studentsData";
 
 connection.query(q1, (err, result) => {
     if (err) {
@@ -71,9 +64,9 @@ connection.query(q1, (err, result) => {
 
     let total = result[0].total + 1;
 
-    let q2 = "INSERT INTO students(id, name, class, city) VALUES (?, ?, ?, ?)";
+    let q2 = "INSERT INTO studentsData(id, name, class, city, email, dob, gender) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    connection.query(q2, [total, name, cls, city], (err, result2) => {
+    connection.query(q2, [total, name, cls, city, email, dob, gender], (err, result2) => {
         if (err) {
             res.send(err);
             return;
@@ -94,7 +87,7 @@ app.get("/student-info", (req, res)=>{
 app.get("/student-info/city", (req, res) => {
   let {city}= req.query;
   
-  let q = 'SELECT * FROM students WHERE city=?';
+  let q = 'SELECT * FROM studentsData WHERE city=?';
   try {
     connection.query(q, [city], (err, result) => {
       if (err) throw err;
@@ -111,7 +104,7 @@ app.get("/student-info/city", (req, res) => {
 app.get("/student-info/roll", (req, res) => {
   let {roll}= req.query;
   
-  let q = 'SELECT * FROM students WHERE id=?';
+  let q = 'SELECT * FROM studentsData WHERE id=?';
   try {
     connection.query(q, [roll], (err, result) => {
       if (err) throw err;
@@ -128,9 +121,25 @@ app.get("/student-info/roll", (req, res) => {
 app.get("/student-info/name", (req, res) => {
   let {name}= req.query;
   
-  let q = 'SELECT * FROM students WHERE name=?';
+  let q = 'SELECT * FROM studentsData WHERE name=?';
   try {
     connection.query(q, [name], (err, result) => {
+      if (err) throw err;
+      let counts = result;
+      res.render("student-info.ejs", { counts });
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Error in DB");
+  }
+});
+
+
+app.get("/all-students", (req, res) => {
+  
+  let q = 'SELECT * FROM studentsData';
+  try {
+    connection.query(q, (err, result) => {
       if (err) throw err;
       let counts = result;
       res.render("student-info.ejs", { counts });

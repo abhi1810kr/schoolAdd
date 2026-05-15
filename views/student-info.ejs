@@ -26,6 +26,9 @@
             <th class="textspace">Name</th>
             <th>Class</th>
             <th class="textspace">City</th>
+            <th class="textspace">Email</th>
+            <th class="textspace">Birth Date</th>
+            <th>Gender</th>
         </tr>
         <% for(count of counts) {%>
         <tr>
@@ -33,6 +36,9 @@
          <td class="textspace"><%=(count.name).toUpperCase()%></td>
          <td><%=count.class%></td>
          <td class="textspace"><%=(count.city).toUpperCase()%></td>
+         <td class="textspace"><%=(count.email)%></td>
+         <td class="textspace"><%=(count.dob)%></td>
+         <td><%=(count.gender).toUpperCase()%></td>
          </tr>
         <% }%>
     </table>
